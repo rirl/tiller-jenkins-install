@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+echo "[$0]:: BEGIN"
+status=0
+source settings/default
+set -x 
+helm install --name ${HELM_RELEASE_NAME}  ${HELM_RELEASE_CHART_VALUES} ${HELM_RELEASE_CHART} ${HELM_RELEASE_CHART_VERSION} 
+status=$?
+set +x
+echo "[$0]:: COMPLETE: [$status]"
+exit $status

@@ -1,0 +1,5 @@
+# YAML formatted value for helm install
+# Jenkins bitnami chart (https://hub.helm.sh/charts/bitnami/jenkins)
+#
+service.port: 9595
+service.httpsPort: 9443

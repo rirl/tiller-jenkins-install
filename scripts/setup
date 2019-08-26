@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+echo "[$0]:: BEGIN"
+status=0
+set -x 
+  helm repo add bitnami https://charts.bitnami.com
+set +x
+echo "[$0]:: COMPLETE: [$status]"
+exit $status

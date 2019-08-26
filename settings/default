@@ -1,0 +1,5 @@
+HELM_RELEASE_NAME=jenkins-k8s
+HELM_RELEASE_CHART=bitnami/jenkins
+HELM_RELEASE_CHART_VERSION="--version 3.3.1"
+HELM_RELEASE_CHART_VALUES="-f config/values.yaml"
+HELM_RELEASE_CHART_VALUES="--set service.port=9095,service.httpsPort=448,persistence.storageClass=nfs-client"

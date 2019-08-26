@@ -1,0 +1,43 @@
+NAME:   jenkins-k8s
+LAST DEPLOYED: Sun Aug 25 16:09:46 2019
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/PersistentVolumeClaim
+NAME         STATUS   VOLUME      CAPACITY  ACCESS MODES  STORAGECLASS  AGE
+jenkins-k8s  Pending  nfs-client  0s
+
+==> v1/Pod(related)
+NAME                          READY  STATUS   RESTARTS  AGE
+jenkins-k8s-57c7b987b7-zgxmz  0/1    Pending  0         0s
+
+==> v1/Secret
+NAME         TYPE    DATA  AGE
+jenkins-k8s  Opaque  1     0s
+
+==> v1/Service
+NAME         TYPE          CLUSTER-IP   EXTERNAL-IP      PORT(S)                     AGE
+jenkins-k8s  LoadBalancer  10.43.3.109  192.168.126.222  80:31469/TCP,443:32232/TCP  0s
+
+==> v1beta1/Deployment
+NAME         READY  UP-TO-DATE  AVAILABLE  AGE
+jenkins-k8s  0/1    1           0          0s
+
+
+NOTES:
+
+** Please be patient while the chart is being deployed **
+
+1. Get the Jenkins URL by running:
+
+** Please ensure an external IP is associated to the jenkins-k8s service before proceeding **
+** Watch the status using: kubectl get svc --namespace default -w jenkins-k8s **
+
+  export SERVICE_IP=$(kubectl get svc --namespace default jenkins-k8s --template "{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}")
+  echo "Jenkins URL: http://$SERVICE_IP/"
+
+2. Login with the following credentials
+
+  echo Username: user
+  echo Password: $(kubectl get secret --namespace default jenkins-k8s -o jsonpath="{.data.jenkins-password}" | base64 --decode)
