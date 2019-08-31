@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# kubectl apply -f debug/storage/pv-volume.yaml
+  kubectl apply -f debug/storage/pv-claim.yaml

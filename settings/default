@@ -1,5 +1,12 @@
 HELM_RELEASE_NAME=jenkins-k8s
-HELM_RELEASE_CHART=bitnami/jenkins
-HELM_RELEASE_CHART_VERSION="--version 3.3.1"
-HELM_RELEASE_CHART_VALUES="-f config/values.yaml"
-HELM_RELEASE_CHART_VALUES="--set service.port=9095,service.httpsPort=448,persistence.storageClass=nfs-client"
+#HELM_RELEASE_CHART=bitnami/jenkins
+#HELM_RELEASE_CHART_VERSION="--version 3.3.1"
+HELM_RELEASE_CHART=stable/jenkins
+HELM_RELEASE_CHART_VERSION=
+#HELM_RELEASE_CHART_VALUES="-f config/values.yaml"
+#HELM_RELEASE_CHART_VALUES="--set service.port=9095,service.httpsPort=448,persistence.storageClass=nfs-client"
+#HELM_RELEASE_CHART_VALUES=
+#HELM_RELEASE_CHART_VALUES="--set service.port=9095,service.httpsPort=448,persistence.existingClaim=jenkins-manual-volume-claim" 
+HELM_RELEASE_CHART_VALUES="--set persistence.existingClaim=task-pv-claim" 
+#HELM_RELEASE_DEBUG="--dry-run --debug"
+HELM_RELEASE_DEBUG=""
